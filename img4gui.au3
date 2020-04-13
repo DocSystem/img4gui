@@ -1,5 +1,17 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=images\shsh-blobs.ico
+#AutoIt3Wrapper_Outfile=img4gui.exe
+#AutoIt3Wrapper_Res_Comment=An img4tool GUI powered by DocSystem
+#AutoIt3Wrapper_Res_Description=An img4tool GUI
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.0
+#AutoIt3Wrapper_Res_ProductName=img4gui
+#AutoIt3Wrapper_Res_ProductVersion=1.0
+#AutoIt3Wrapper_Res_Language=1036
+#AutoIt3Wrapper_Res_File_Add=img4tool.exe
+#AutoIt3Wrapper_Res_File_Add=tsschecker.exe
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Icon=images\shsh-blobs.ico
 #AutoIt3Wrapper_Res_Comment=An img4tool GUI powered by DocSystem
 #AutoIt3Wrapper_Res_Description=An img4tool GUI
 #AutoIt3Wrapper_Res_Fileversion=1.0.0.0
@@ -24,17 +36,17 @@
 
 #Region ### START Koda GUI section ### Form=C:\Users\Antoine\Desktop\img4toolGUI\img4gui.kxf
 $img4gui = GUICreate("img4gui - An img4tool GUI", 321, 504, 681, 231)
-$WelcomeLabel = GUICtrlCreateLabel("Bienvenue sur img4gui", 0, 0, 320, 41, $SS_CENTER)
+$WelcomeLabel = GUICtrlCreateLabel("Welcome to img4gui", 0, 0, 320, 41, $SS_CENTER)
 GUICtrlSetFont(-1, 23, 400, 0, "MS Sans Serif")
 $WindowControl = GUICtrlCreateTab(8, 40, 305, 457)
-$BlobTester = GUICtrlCreateTabItem("Tester des blobs")
-$BlobSelector = GUICtrlCreateButton("Choisir un fichier blobs", 68, 107, 171, 25)
+$BlobTester = GUICtrlCreateTabItem("Test blobs")
+$BlobSelector = GUICtrlCreateButton("Choose blobs file", 68, 107, 171, 25)
 GUICtrlSetFont(-1, 9, 400, 0, "Arial")
-$BMSelector = GUICtrlCreateButton("Chosir un BuildManifest.plist", 68, 163, 171, 25)
+$BMSelector = GUICtrlCreateButton("Choose a BuildManifest.plist", 68, 163, 171, 25)
 GUICtrlSetFont(-1, 9, 400, 0, "Arial")
-$StartTest = GUICtrlCreateButton("Lancer le test", 92, 219, 123, 41)
+$StartTest = GUICtrlCreateButton("Start test", 92, 219, 123, 41)
 GUICtrlSetFont(-1, 13, 400, 0, "Arial")
-$BlobDL = GUICtrlCreateTabItem("Télécharger des blobs")
+$BlobDL = GUICtrlCreateTabItem("Download blobs")
 GUICtrlSetState(-1,$GUI_SHOW)
 $ECIDInput = GUICtrlCreateInput("", 152, 112, 121, 24)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
@@ -42,7 +54,7 @@ $ECIDEnter = GUICtrlCreateLabel("ECID :", 112, 112, 42, 20)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
 $ModelSelector = GUICtrlCreateCombo("", 152, 160, 121, 25, BitOR($CBS_DROPDOWN,$CBS_AUTOHSCROLL))
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
-$ModelEnter = GUICtrlCreateLabel("Modèle : ", 96, 160, 58, 20)
+$ModelEnter = GUICtrlCreateLabel("Model : ", 96, 160, 58, 20)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
 $BoardInput = GUICtrlCreateInput("", 152, 208, 121, 24)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
@@ -50,11 +62,11 @@ $BoardEnter = GUICtrlCreateLabel("Board Config (iPhone) : ", 16, 208, 142, 20)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
 $iOSInput = GUICtrlCreateInput("", 152, 256, 121, 24)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
-$iOSEnter = GUICtrlCreateLabel("Version d'iOS : ", 64, 256, 95, 20)
+$iOSEnter = GUICtrlCreateLabel("iOS Version : ", 64, 256, 95, 20)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
-$iOSLatest = GUICtrlCreateCheckbox("Dernière version ?", 104, 288, 129, 17)
+$iOSLatest = GUICtrlCreateCheckbox("Latest Version?", 104, 288, 129, 17)
 GUICtrlSetFont(-1, 10, 400, 0, "Arial")
-$StartDL = GUICtrlCreateButton("Télécharger blobs", 92, 323, 139, 41)
+$StartDL = GUICtrlCreateButton("Download blobs", 92, 323, 139, 41)
 GUICtrlSetFont(-1, 13, 400, 0, "Arial")
 GUICtrlCreateTabItem("")
 GUISetState(@SW_SHOW)
@@ -89,10 +101,10 @@ While 1
 					verify()
 
 				Else
-					MsgBox(4096, "img4gui - Erreur", "Merci de séléctionner un BuildManifest.plist", 0)
+					MsgBox(4096, "img4gui - Error", "Please select a BuildManifest.plist file", 0)
 				EndIf
 			Else
-				MsgBox(4096, "img4gui - Erreur", "Merci de séléctionner un Blob", 0)
+				MsgBox(4096, "img4gui - Error", "Please select a blob file", 0)
 			EndIf
 
 		Case $StartDL
@@ -116,7 +128,7 @@ While 1
 							download()
 
 						Else
-							MsgBox(4096, "img4gui - Erreur", "Merci de choisir une version d'iOS", 0)
+							MsgBox(4096, "img4gui - Error", "Please select an iOS Version", 0)
 
 						EndIf
 					Else
@@ -129,16 +141,16 @@ While 1
 							download()
 
 						Else
-							MsgBox(4096, "img4gui - Erreur", "Merci de choisir une version d'iOS", 0)
+							MsgBox(4096, "img4gui - Error", "Please select an iOS Version", 0)
 
 						EndIf
 					EndIf
 				Else
-					MsgBox(4096, "img4gui - Erreur", "Merci d'entrer un modèle", 0)
+					MsgBox(4096, "img4gui - Error", "Please enter a Phone Model", 0)
 
 				EndIf
 			Else
-				MsgBox(4096, "img4gui - Erreur", "Merci d'entrer un ECID", 0)
+				MsgBox(4096, "img4gui - Error", "Please enter an ECID", 0)
 
 		EndIf
 	EndSwitch
@@ -150,10 +162,10 @@ Func verify()
 	ProcessWaitClose($foo)
 
 	If _ReplaceStringInFile($filename, $valeur, $valeur) Then
-		MsgBox(4096, "img4gui - Vérification terminée", "Le blob séléctionné est valide pour cette version d'iOS", 0)
+		MsgBox(4096, "img4gui - Verification done", "The selected blob is valid for this iOS version", 0)
 
 	Else ; SI LA CHAINE N'EST PAS TROUVEE
-		MsgBox(4096, "img4gui - Vérification terminée", "Le blob séléctionné n'est pas valide pour cette version d'iOS", 0)
+		MsgBox(4096, "img4gui - Verification done", "The selected blob isn't valid for this iOS version", 0)
 
 	EndIf
 
@@ -164,10 +176,10 @@ Func download()
 	ProcessWaitClose($foo)
 
 	If _ReplaceStringInFile($filename, $valeur, $valeur) Then
-		MsgBox(4096, "img4gui - Vérification terminée", "Le blob demandé a été téléchargé", 0)
+		MsgBox(4096, "img4gui - Verification done", "The asked blob was successfully downloaded", 0)
 
 	Else ; SI LA CHAINE N'EST PAS TROUVEE
-		MsgBox(4096, "img4gui - Vérification terminée", "Le blob demandé n'as pas pu être téléchargé", 0)
+		MsgBox(4096, "img4gui - Verification done", "The asaked blob wasn't downlaoded", 0)
 
 	EndIf
 
